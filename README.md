@@ -1,30 +1,56 @@
-__**Mile Dispatch Queue is a multithreaded task dispatcher of queues**
+# Mile Dispatch Queue is a multithreaded task dispatcher of queues**
 
 The lib is developed to optimize application support for systems with multi-core processors and other symmetric multiprocessing systems.
 It is an implementation of task parallelism based on the thread pool pattern. The fundamental idea is to move the management 
 of the thread pool out of the hands of the developer, and closer to the operating system. The developer injects "work packages" into the pool oblivious of the pool's architecture. 
 This model improves simplicity, portability and performance.
 
-*This version is a naive implementation of Apple GCD develops to study event-driven model of p2p networks are used in blockchain core applications*
-
+##Build 
+    $ git clone https://github.com/mile-core/mile-csa-dispatchq
+    $ cd mile-csa-dispatchq; mkdir build; cd build; cmake ..; make -j4
 ---
 
 ## Code example
 
 ```c++
-       auto main_thread_id = std::this_thread::get_id();
-   
-       for (int i = 0; i < 100 ; ++i) {
-           dispatch::Queue::main()->async([main_thread_id,i]{
-               BOOST_CHECK_EQUAL(std::this_thread::get_id(), main_thread_id );
-               if (i==99) {
-                   dispatch::main::exit();
-              }
-           });
-       }
-   
-       dispatch::main::loop([main_thread_id]{
-           BOOST_CHECK_EQUAL(std::this_thread::get_id(), main_thread_id );
-           sleep(1);
-       });        
+      auto q99 = Queue(99);
+  
+      int w = 10;
+      for (int j = 0; j < w ; ++j) {
+          q10.async([=,&q10]{
+               //
+               // handle task
+               //
+              std::this_thread::sleep_for(std::chrono::seconds(1));
+          });
+      }
+ 
+  
+      for (int j = 0; j < 100 ; ++j) {
+          Default::async([=]{
+
+            //
+            // handle tasks async in default queue 
+            //           
+              
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+  
+            if (j>20) {
+                //
+                // Stop default loop and join to main thread
+                //
+                Default::loop::exit();
+            }  
+          });
+      }
+    
+      //
+      // Run default loop
+      //      
+      Default::loop::run();
+    
+      //
+      // Wait tasks after default loop exiting
+      //
+      q99.wait(); 
  ```
