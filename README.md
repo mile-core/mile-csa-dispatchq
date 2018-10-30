@@ -1,4 +1,4 @@
-# Mile Dispatch Queue is a multithreaded task dispatcher of queues**
+# Mile Dispatch Queue is a multithreaded task dispatcher of queues
 
 The lib is developed to optimize application support for systems with multi-core processors and other symmetric multiprocessing systems.
 It is an implementation of task parallelism based on the thread pool pattern. The fundamental idea is to move the management 
