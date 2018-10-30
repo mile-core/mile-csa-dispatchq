@@ -68,9 +68,7 @@ namespace dispatch {
             }
 
             void run(){
-                while (Queue::get_default()->is_running()){
-                    if (std::dynamic_pointer_cast<_DefaultQueue>(Queue::get_default())->is_exited)
-                        break;
+                while (!std::dynamic_pointer_cast<_DefaultQueue>(Queue::get_default())->is_exited){
                     std::this_thread::sleep_for(std::chrono::milliseconds(100));
                 }
             }
