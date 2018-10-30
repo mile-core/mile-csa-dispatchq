@@ -14,3 +14,6 @@
          ctest WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} )
 
  add_dependencies(run_utests test_thread_pool)
+
+ add_test (NAME test_thread_pool COMMAND test_thread_pool)
+ enable_testing ()
