@@ -132,7 +132,9 @@ namespace dispatch {
             unsigned max_number_of_threads = std::max<unsigned>(std::thread::hardware_concurrency(), 2);
             unsigned number_of_threads_required = round(log(queues.size()) + 1);
             while (threads.size() < std::min<unsigned>(max_number_of_threads, number_of_threads_required)) {
+                lock.unlock();
                 add_worker();
+                lock.lock();
             }
         }
         condition.notify_one();
