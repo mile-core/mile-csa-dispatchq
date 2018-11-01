@@ -38,6 +38,6 @@ if(Boost_FOUND)
             )
     link_directories("${Boost_LIBRARY_DIRS}")
 
-    add_subdirectory(utests)
+    #add_subdirectory(utests)
 
 endif()
