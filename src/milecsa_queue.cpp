@@ -52,6 +52,10 @@ const  bool  Queue::is_default() const {
 }
 
 bool Queue::is_running() const {
+    return pool_->is_running();
+}
+
+bool Queue::is_active() const {
     return pool_->is_running() && queue_->size()>0;
 }
 
