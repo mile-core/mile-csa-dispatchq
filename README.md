@@ -1,13 +1,15 @@
-# Mile Dispatch Queue is a multithreaded task dispatcher of queues**
+# Mile Dispatch Queue is a multithreaded task dispatcher of queues
 
 The lib is developed to optimize application support for systems with multi-core processors and other symmetric multiprocessing systems.
 It is an implementation of task parallelism based on the thread pool pattern. The fundamental idea is to move the management 
 of the thread pool out of the hands of the developer, and closer to the operating system. The developer injects "work packages" into the pool oblivious of the pool's architecture. 
 This model improves simplicity, portability and performance.
 
-##Build 
+## Build 
+
     $ git clone https://github.com/mile-core/mile-csa-dispatchq
     $ cd mile-csa-dispatchq; mkdir build; cd build; cmake ..; make -j4
+
 ---
 
 ## Code example

@@ -2,12 +2,10 @@ cmake_minimum_required(VERSION 3.9)
 project(milecsa_dispatchq)
 enable_testing()
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
 add_library(milecsa_dispatchq
         src/milecsa_queue.cpp
-        src/thread_queue.hpp
-        src/thread_pool.hpp
         )
 
 #############################################################################
@@ -40,6 +38,8 @@ if(Boost_FOUND)
             )
     link_directories("${Boost_LIBRARY_DIRS}")
 
-    add_subdirectory(utests)
-
+#
+#    add_subdirectory(utests)
+#
+    
 endif()

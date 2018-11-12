@@ -417,9 +417,14 @@ namespace dispatch {
         virtual const bool is_default() const ;
 
         /**
-        * Test the current thread is active
+        * Test the current thread is running
         * */
         virtual bool is_running() const ;
+
+        /**
+         * Test the current thread is running and has at least one active task
+         * */
+        virtual bool is_active() const;
 
     protected:
         std::shared_ptr<dispatch::base_thread_pool>  pool_;
